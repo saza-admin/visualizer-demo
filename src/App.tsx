@@ -48,15 +48,16 @@ function App() {
       <header className="topbar">
         <div>
           <p className="eyebrow">Standalone React + Vite POC</p>
-          <h1>Wall Color Visualizer</h1>
+          <h1>Wall & Finish Visualizer</h1>
           <p className="topbar-copy">
-            A proof of concept that keeps the original room photo intact and
-            recolors only the wall area inside it as you switch shades.
+            A proof of concept for paint and wood-finish visualization using
+            supplied transparent PNG room scenes across bedroom, hall,
+            exterior, door, and passage views.
           </p>
         </div>
         <div className="topbar-badge">
           <span className="badge-dot" />
-          Instant wall recolor
+          Transparent PNG scenes
         </div>
       </header>
 
@@ -142,7 +143,7 @@ function App() {
               <p className="eyebrow">Preview</p>
               <h2>{selectedRoom.name}</h2>
               <p className="stage-copy">
-                Painted in <strong>{selectedShade.name}</strong>{" "}
+                {selectedRoom.previewVerb} <strong>{selectedShade.name}</strong>{" "}
                 <span className="muted-copy">({selectedShade.code})</span>
               </p>
             </div>
@@ -151,25 +152,27 @@ function App() {
 
           <section className="insight-strip">
             <article className="insight-card">
-              <p className="insight-title">How the wall changes</p>
+              <p className="insight-title">How the surface changes</p>
               <p>
-                The preview uses the same room image and recolors only the
-                bright wall region inside that photo.
+                Each supplied PNG sits over a live background color, so only
+                the transparent wall zone picks up the new shade while the
+                furniture and trim stay untouched.
               </p>
             </article>
             <article className="insight-card">
-              <p className="insight-title">Why it stays simple</p>
+              <p className="insight-title">Why it stays flexible</p>
               <p>
-                The wall color is updated directly inside the original bedroom
-                image, so the furniture and decor stay part of the same photo.
+                The preview engine is now just a background fill plus the
+                original transparent image, which is much more stable than
+                cutting or recoloring pixels in the browser.
               </p>
             </article>
             <article className="insight-card">
-              <p className="insight-title">Version 1 region</p>
+              <p className="insight-title">What this version proves</p>
               <p>
-                This POC uses a hand-tuned wall region for one room. That gives
-                us a stable standalone demo now and a clean path to smarter
-                wall detection later.
+                The same background-swap flow can drive bedroom, exterior,
+                hall, door, and passage scenes as long as the target surface is
+                transparent in the supplied PNG.
               </p>
             </article>
           </section>
@@ -178,8 +181,8 @@ function App() {
         <aside className="panel panel-right">
           <div className="shade-toolbar">
             <div>
-              <p className="panel-kicker">Pick a shade</p>
-              <h2 className="shade-heading">Curated paint palette</h2>
+              <p className="panel-kicker">Pick a finish</p>
+              <h2 className="shade-heading">Curated paint & finish palette</h2>
             </div>
             <button
               type="button"
